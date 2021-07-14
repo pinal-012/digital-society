@@ -1,0 +1,28 @@
+<script>
+    //Visitor Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-visitor');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+        $.ajax(
+        {
+            url:"{% url 'w_del-visitor' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'w_view-visitor' %}"
+                window.location.assign(url);
+                
+            }
+        }
+        ) 
+    });
+</script>
+
+    

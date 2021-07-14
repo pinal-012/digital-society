@@ -1,0 +1,284 @@
+<script>
+    //Notice Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-sid');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+        $.ajax(
+        {
+            url:"{% url 'c_del-notice' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-notice' %}"
+                window.location.assign(url);
+                
+            }
+        }
+        ) 
+    });
+    //Event Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-eid');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-event' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-event' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Complaint Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-cid');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-complaint' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-complaint' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Suggestion Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-suggestion');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-suggestion' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-suggestion' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Photo Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-photo');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-photo' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-photo' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+    //Video Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-video');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-video' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-video' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Member Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-member');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-member' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-member' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Watchman Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-watchman');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-watchman' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_watchman-list' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Maintenance Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-maintenance');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'c_del-maintenance' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'c_view-maintenance' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Email Validation
+    $("#myemail").on("blur",function(){
+    //$("#myemail").blur(function(){
+    //$("#myemail").on("input",function(){
+        console.log("---------------------blurred")
+        var email=$(this).val();
+        var role=$("#roleID").val();
+        //let csr=$("input[name='csrfmiddlewaretoken']").val();
+
+        console.log(email)
+        console.log(role)
+
+        $.ajax({
+            url : "{% url 'check-email' %}",
+            data:{
+                'email':email,
+                'role':role,
+                //csrfmiddlewaretoken:csr,
+            },
+            method:'POST',
+            dataType:'json',
+
+            success:function(data)
+            {
+               console.log(data.context.msg);
+               console.log(data.context.email)
+
+                if(data.context.msg!= "")
+                {
+                    //$('#myemail').attr('placeholder','Some New Text 1');
+                    $("#msgid").html(data.context.msg);
+
+                    if(data.context.email!="")
+                    {
+                        $('#myemail').css("color","red");
+                    }
+                    else
+                    {
+                        $('#myemail').css("color","white");
+                        console.log("else email part")
+                    }  
+                }
+                else
+                {
+                    console.log("else part")
+                    $('#myemail').val(data.context.email).css('color','white');
+                    $("#msgid").html("");
+                }
+            }
+        });
+    });   
+</script>

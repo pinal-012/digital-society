@@ -1,0 +1,81 @@
+<script>
+    //Event Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-eid');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'del-event' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'view-your-event' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Complaint Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-cid');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'del-complaint' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'view-complaint' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    //Suggestion Delete
+    $(":button").on("click",function () {
+        console.log('---------------------------btn clicked')
+        let id=$(this).attr('data-suggestion');
+        console.log(id);
+        let csr=$("input[name='csrfmiddlewaretoken']").val();
+        uesrdata={
+                id:id,
+                csrfmiddlewaretoken:csr,
+                }
+
+        $.ajax(
+        {
+            url:"{% url 'del-suggestion' %}",
+            method:'POST',
+            data:uesrdata,
+            success:function(response)
+            {
+                url = "{% url 'view-suggestion' %}"
+                window.location.assign(url); 
+            }
+        }
+        ) 
+
+    });
+
+    
+</script>

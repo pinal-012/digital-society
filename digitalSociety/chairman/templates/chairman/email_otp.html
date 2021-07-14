@@ -1,0 +1,16 @@
+<html>
+    {% if data.wid %}
+    <h2>Hello {{data.wid.fname}}</h2>
+    {% endif %}
+
+    {% if data.cid %}
+    <h2>Hello {{data.cid.fname}}</h2>
+    {% endif %}
+
+    {% if data.mid %}
+    <h2>Hello {{data.mid.fname}}</h2>
+    {% endif %}
+
+    <p> Your OTP is :{{data.otp}}</p>
+    <p> Login with the above OTP to reset password</p>
+</html>

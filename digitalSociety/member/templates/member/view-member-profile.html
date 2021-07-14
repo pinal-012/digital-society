@@ -1,0 +1,183 @@
+﻿{% extends 'member/index.html' %}
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+         
+        {% block cssextra %}
+        <title>Profile - Digital Society</title>       
+        <link rel="stylesheet" href="{% static 'member\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'member\assets\css\timeline.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'member\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'member\assets\css\color_skins.css' %}">
+        {% endblock %}
+    </head>
+        <body class="theme-cyan">
+        {% block content %}
+        <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Member Profile <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                            <li class="breadcrumb-item">Members</li>
+                                                                                        <li class="breadcrumb-item active">Profile</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix profile-page">
+        <div class="col-lg-4 col-md-12">
+            <div class="card profile-header">
+                <div class="body text-center">
+                    <div class="profile-image"> <img src="{{context.mid_pk.profile_pic.url}}" alt=""> </div>
+                    <div>
+                        <h4 class="m-b-0"><strong>{{context.mid_pk.fname}} {{context.mid_pk.lname}}</strong></h4>
+                        <span class="job_post">Block Number: {{context.mid_pk.m_id.homeNo}}</span>
+                        <span class="job_post">Contact No.:{{context.mid_pk.m_id.contactNo}}</span>
+                        <span class="job_post">email: {{context.mid_pk.user_id.email}}</span>
+                    </div>
+                    
+                </div>                    
+            </div>                               
+           
+            <div class="card">
+                
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="Followers">
+                        <ul class="right_chat list-unstyled">
+                            <li class="online">
+                                <a href="javascript:void(0);">
+                                    
+                                </a>                            
+                            </li>
+                            <li class="online">
+                                <a href="javascript:void(0);">
+                                   
+                                </a>                            
+                            </li>
+                            <li class="offline">
+                                <a href="javascript:void(0);">
+                                    
+                                </a>                            
+                            </li>
+                            <li class="offline">
+                                <a href="javascript:void(0);">
+                                    
+                                </a>                            
+                            </li>
+                            <li class="online">
+                                <a href="javascript:void(0);">
+                                    
+                                </a>                            
+                            </li>                        
+                        </ul>
+                    </div>
+                    <div class="tab-pane body" id="friends">
+                        <ul class="new_friend_list list-unstyled row">
+                                                      
+                        </ul>
+                    </div>                        
+                </div>
+            </div>                 
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#about">Member Profile</a></li>
+                    
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane body active" id="about">
+                        
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p><strong>Name:</strong> {{context.mid_pk.fname}} {{context.mid_pk.lname}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Block Number:</strong>{{context.mid_pk.m_id.homeNo}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Contact No:</strong> {{context.mid_pk.m_id.contactNo}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Email ID:</strong> {{context.mid_pk.user_id.email}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Address:</strong> {{context.mid_pk.m_id.address}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Job Profession:</strong> {{context.mid_pk.m_id.job_profession}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Job Address:</strong> {{context.mid_pk.m_id.job_address}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle-Type:</strong> {{context.mid_pk.m_id.vehicle_type}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Vehicle-Number:</strong> {{context.mid_pk.m_id.vehicle_no}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Blood-Group:</strong> {{context.mid_pk.m_id.bloodgroup}}</p>
+                            </li>
+                            <li>
+                                <p><strong>Number of Family-Members:</strong> {{context.mid_pk.m_id.family_member_detail}}</p>
+                            </li>
+                        </ul>
+                        
+                    </div>
+
+                    
+                    
+                      
+                    </div>                        
+                </div>
+            </div>
+            
+    </div>
+
+            </div>
+        </section>
+        {% endblock %}
+
+                <!-- Scripts -->
+        {% block javascript %}
+        <script src="{% static 'member\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'member\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'member\assets\bundles\mainscripts.bundle.js' %}"></script>
+        <script src="{% static 'member\assets\bundles\knob.bundle.js' %}"></script>
+        <script src="{% static 'member\assets\js\pages\charts\jquery-knob.js' %}"></script>
+				
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        {% endblock %}
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

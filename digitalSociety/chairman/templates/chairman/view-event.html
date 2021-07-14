@@ -1,0 +1,97 @@
+﻿{% extends 'chairman/index.html' %}
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+                
+        {% block cssextra %} 
+        <title>View Event - Digital Society</title>       
+        <link rel="stylesheet" href="{% static 'chairman\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\blog.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\color_skins.css' %}">
+        {% endblock %}
+    </head>
+
+        <body class="theme-cyan">
+         
+{% block content %}
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Event List <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'c_index' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                            <li class="breadcrumb-item">Event</li>
+                                                                                        <li class="breadcrumb-item active">View Event</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                <div class="blog-page">
+    <form>
+        {% csrf_token %}
+    <div class="row">
+        {% for i in context.eventData %}
+        <div class="col-lg-8 col-md-12 left-box">
+            <div class="card single_post">        
+                <div class="body">
+                    <h3 class="m-t-0 m-b-5"><a href="detail.html">{{i.e_title}}</a></h3>
+                    <ul class="meta">
+                        <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{i.e_postedBy}}</a></li>
+                        <li><a href="#"><i class="zmdi zmdi-label col-red"></i>{{i.e_created_at}}</a></li>
+                        <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>{{i.whenPublished}}</a></li>
+                    </ul>
+                </div> 
+                <div class="image"><a href="profile.html"><img src="{{i.event_pic.url}}" width= "300" height="200" alt="User"/></a></div>                   
+                <div class="body">
+                    <p style="font-size: 10;">Date: {{i.e_date}}</p>
+                    <p style="font-size: 10;">Time: {{i.e_fromTime}} to {{i.e_toTime}}</p>
+                    <p>{{i.e_description}}</p>
+                    <input type="button" class="btn btn-primary btn-round" data-eid="{{i.id}}" value="Delete" />                       
+                </div>
+            </div>
+        </div>
+    {% endfor %} 
+    </div> 
+    </form> 
+    </section>
+    {% endblock %}
+                                           
+    {% block javascript %}  
+                <!-- Scripts -->
+        <script src="{% static 'chairman\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'chairman\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'chairman\assets\bundles\mainscripts.bundle.js' %}"></script>
+                		<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        {% include 'chairman/ajaxfile.html' %}
+        {% endblock %}  
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

@@ -1,0 +1,413 @@
+﻿{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+                
+        {% block cssextra %}     
+        <title>Dashboard - Digital Society</title>  
+        <link rel="stylesheet" href="{% static 'watchman\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'watchman\assets\plugins\jvectormap\jquery-jvectormap-2.0.3.min.css' %}">
+        <link rel="stylesheet" href="{% static 'watchman\assets\plugins\morrisjs\morris.min.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'watchman\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'watchman\assets\css\color_skins.css' %}">
+        {% endblock %}
+            </head>
+        <body class="theme-cyan">
+        <!-- Page Loader -->
+        <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'watchman\assets\images\logo.svg' %}" width="48" height="48" alt="Oreo"></div>
+                <p>Please wait...</p>        
+            </div>
+        </div>
+        <!-- Overlay For Sidebars -->
+        <div class="overlay"></div>
+        <nav class="navbar p-l-5 p-r-5">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <div class="navbar-header">
+                        <a href="javascript:void(0);" class="bars"></a>
+                        <a class="navbar-brand"><img src="{% static 'watchman\assets\images\logo.svg' %}" width="30" alt="Oreo"><span class="m-l-10">Digital Society</span></a>
+                    </div>
+                </li>
+                <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
+                <li><a href="{% url 'w_contact-list'%}" title="Contact List"><i class="zmdi zmdi-account-box-phone"></i></a></li> 
+                </li>
+        
+                <li class="dropdown"> <a href="javascript:void(0);" title="Emergancy" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-phone"></i>
+                    <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+                    </a>
+                    <div class="dropdown-menu pullDown">
+                        <div class="card">
+                            <div class="body">                        
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Doctors">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover m-b-0 c_list">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="color: darkcyan;">Service</th>                                    
+                                                        <th style="color: darkcyan;">Contact No</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="c_name">Ambulance</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>108,102</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="c_name">Police Station</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>100</span>
+                                                        </td>
+                                                    </tr>                                        
+                                                    
+                                                    <tr>
+                                                        <td>
+                                                            <p class="c_name">Fire Station</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>101</span>
+                                                        </td>
+                                                    </tr>                                        
+                                                    <tr>
+                                                        <td>
+                                                            <p class="c_name">Women Helpline</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>181</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="c_name">Child Helpline</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>1098</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+                </li>
+                <li class="d-none d-md-inline-block">
+                    
+                </li>        
+                <li class="float-right">
+                    <a href="{% url 'c_logout' %}" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+                    <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+                </li>
+            </ul>
+</nav>        <!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboard"><i class="zmdi zmdi-home m-r-5"></i>Home</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user">{{context.uid.role}}</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info">
+                            <div class="image"><img src="{{context.wid.profile_pic.url}}" alt="User"></div>
+                            <div class="detail">
+
+
+                                <h4> Welcome {{context.wid.fname}}</h4>
+                                <small>{{context.uid.email}}</small> <br> <!-- {{context.uid}} also works-->
+                                <small>Contact No:{{context.wid.contact_no}}</small>                         
+                            
+                            
+                            </div>
+                        </div>
+                    </li>
+                    <li class="header">MAIN</li>
+                    
+                    <li class="active open"><a href="{% url 'w_index' %}"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>            
+                    <li class=""><a href="{% url 'w_profile' %}"><i class="zmdi zmdi-account"></i><span>Profile</span></a></li>
+                    
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>Visitor</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'w_add-visitor' %}">Add Visitor</a></li>
+                            <li class=""><a href="{% url 'w_view-visitor' %}">All Visitors</a></li>                       
+                            
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-accounts"></i><span>Members</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'w_view-member' %}">All Members</a></li>                       
+                            
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-comment-alt-text"></i><span>Notice</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'w_view-notice' %}">View Notice</a></li>
+                    
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-collection-image-o"></i><span>Events</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'w_view-event' %}">View Event</a></li>                       
+                        </ul>
+                    </li>
+                    
+                    <li class="">
+                        <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-collection-folder-image"></i><span>Media</span></a>
+                        <ul class="ml-menu">
+                            <li class=""><a href="{% url 'w_view-photo' %}">Photo Gallery</a></li> 
+                            <li class=""><a href="{% url 'w_view-video' %}">Video Gallery</a></li>            
+                        </ul>
+                    </li>
+                    
+                    
+                    <hr><hr><hr><hr>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane stretchLeft" id="user">
+            <div class="tab-pane stretchLeft" id="user">
+                <div class="menu">
+                    <ul class="list">
+                        <li>
+                            <div class="user-info m-b-20 p-b-15">
+                                <div class="image"><img src="{{context.wid.profile_pic.url}}" alt="User"></div>
+                                <div class="detail">
+                                    <h4>{{context.wid.fname}} {{context.wid.lname}}</h4>
+                                    <small>{{context.uid.role}}</small>                        
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            
+                            <small class="text-muted">Email address: </small>
+                            <p>{{context.uid.email}}</p>
+                            <hr>
+                            <small class="text-muted">Phone: </small>
+                            <p>{{context.wid.contact_no}}</p>
+                            <hr>
+                            
+                                                    
+                        </li>                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</aside>
+        <!-- Right Sidebar -->
+        <aside id="rightsidebar" class="right-sidebar">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
+                
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane slideRight active" id="setting">
+                    <div class="slim_scroll">
+                                      
+                        <div class="card">
+                            <h6>Skins</h6>
+                            <ul class="choose-skin list-unstyled">
+                                <li data-theme="purple">
+                                    <div class="purple"></div>
+                                </li>                   
+                                <li data-theme="blue">
+                                    <div class="blue"></div>
+                                </li>
+                                <li data-theme="cyan" class="active">
+                                    <div class="cyan"></div>                    
+                                </li>
+                                <li data-theme="green">
+                                    <div class="green"></div>
+                                </li>
+                                <li data-theme="orange">
+                                    <div class="orange"></div>
+                                </li>
+                                <li data-theme="blush">
+                                    <div class="blush"></div>                    
+                                </li>
+                            </ul>                    
+                        </div>
+                        
+                        <div class="card theme-light-dark">
+                            <h6>Left Menu</h6>
+                            <button class="t-light btn btn-default btn-simple btn-round btn-block">Light</button>
+                            <button class="t-dark btn btn-default btn-round btn-block">Dark</button>
+                            <button class="m_img_btn btn btn-primary btn-round btn-block">Sidebar Image</button>                    
+                        </div>                
+                        
+                    </div>                
+                </div>       
+                
+                
+            </div>
+        </aside>       
+
+        {% block content %}
+        <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Dashboard <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                                                    
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'w_index' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                                                                                        <li class="breadcrumb-item active">Dashboard</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card" style="border: 1px solid cyan;">
+                            <div class="body">
+                                <h3 class="number count-to m-b-0" style="color: darkcyan;" data-from="0" data-to="{{context.member_count}}" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                <p class="text-muted">Society Members<i class="zmdi zmdi-mood"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card" style="border: 1px solid cyan;">
+                            <div class="body">
+                                <h3 class="number count-to m-b-0" style="color: darkcyan;" data-from="0" data-to="{{context.notice_count}}" data-speed="2500" data-fresh-interval="1000">3218 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                <p class="text-muted">Notices<i class="zmdi zmdi-mood"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card" style="border: 1px solid cyan;">
+                            <div class="body">
+                                <h3 class="number count-to m-b-0" style="color: darkcyan;" data-from="0" data-to="{{context.event_count}}" data-speed="2500" data-fresh-interval="1000">284 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                <p class="text-muted">Events <i class="zmdi zmdi-mood"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 left-box">
+                        <div class="card single_post" style="border: 1px solid cyan;">        
+                            <div class="body">
+                                <h3 class="m-t-0 m-b-5" style="color: darkcyan;"><a>Latest Event: {{context.last_event.e_title}}</a></h3>
+                                <table class="meta">
+                                    <tr>
+                                    <td><a><i class="zmdi zmdi-account col-blue"></i><small>Posted By: {{context.last_event.e_postedBy}}</small></a></td>
+                                    <td style="padding-left: 50px; padding-right: 50px;"><a><i class="zmdi zmdi-label col-red"></i><small>{{context.last_event.e_created_at}}</small></a></td>
+                                    <td><a><i class="zmdi zmdi-comment-text col-blue"></i><small>{{context.last_event.whenPublished}}</small></a></td>
+                                    </tr>
+                                </table>
+                            </div> 
+                            <div class="image"><a><img src="{{context.last_event.event_pic.url}}" width= "1000" height="300" alt="User"/></a></div>                   
+                            <div class="body">
+                                <p style="font-size: 10;">Date: {{context.last_event.e_date}}</p>
+                                <p style="font-size: 10;">Time: {{context.last_event.e_fromTime}} to {{context.last_event.e_toTime}}</p>
+                                <p style="font-size: 17;">{{context.last_event.e_description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 left-box">
+                        <div class="card single_post" style="border: 1px solid cyan;">        
+                            <div class="body">
+                                <h3 class="m-t-0 m-b-5" style="color: darkcyan;"><a>Latest Notice: {{context.last_notice.title}}</a></h3>
+                                <table class="meta">
+                                    <tr>
+                                    <td><a><i class="zmdi zmdi-account col-blue"></i><small>Posted By: Chairman</small></a></td>
+                                    <td style="padding-left: 50px; padding-right: 50px;"><a><i class="zmdi zmdi-label col-red"></i><small>{{context.last_notice.created_at}}</small></a></td>
+                                    <td><a><i class="zmdi zmdi-comment-text col-blue"></i><small>{{context.last_notice.whenPublished}}</small></a></td>
+                                    </tr>
+                                </table>
+                            </div> 
+                            <div class="body">
+                                <p style="font-size: 17;">{{context.last_notice.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 left-box">
+                        <div class="card single_post" style="border: 1px solid cyan;">
+                            <div class="body">
+                            <h3 class="m-t-0 m-b-5" style="color: darkcyan;"><a>Recently Added Members</a></h3>  
+                        <table class="table m-b-0 table-hover">
+                            <thead>
+                                <tr>                                       
+                                    <th>Photo</th>
+                                    <th>Home Number</th>
+                                    <th>Name</th>
+                                    <th>Contact No.</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                {% for k in context.last3_member %}
+                                <tr>
+                                    <td><span class="list-icon"><img class="patients-img" src="{{k.profile_pic.url}}" alt=""width="50" height="50"></span></td>
+                                    <td>{{k.m_id.homeNo}}</td>
+                                    <td>{{k.fname}} {{k.lname}}</td>
+                                    <td>{{k.m_id.contactNo}}</td>
+                                    <td>{{k.user_id.email}}</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </section>
+        {% endblock %}
+                <!-- Scripts -->
+
+        {% block javascript %}
+        <script src="{% static 'watchman\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'watchman\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'watchman\assets\bundles\mainscripts.bundle.js' %}"></script>
+        <script src="{% static 'watchman\assets\bundles\morrisscripts.bundle.js' %}"></script>
+        <script src="{% static 'watchman\assets\bundles\jvectormap.bundle.js' %}"></script>
+        <script src="{% static 'watchman\assets\bundles\knob.bundle.js' %}"></script>
+        <script src="{% static 'watchman\assets\js\pages\index.js' %}"></script>
+				<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        {% endblock %}
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

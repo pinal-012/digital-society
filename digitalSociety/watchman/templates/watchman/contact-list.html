@@ -1,0 +1,134 @@
+﻿{% extends 'watchman/index.html' %}
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+                
+        {% block cssextra %}         
+        <link rel="stylesheet" href="{% static 'watchman\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <title>Contact-List - Digital Society</title>
+            <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'watchman\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'watchman\assets\css\color_skins.css' %}">
+        {% endblock %}
+    </head>
+        <body class="theme-cyan">
+        
+        {% block content %}
+        <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Contact-List <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active">Contact-List</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card patients-list">
+                <div class="body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs padding-0">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#All">Member Contact-List</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#All1">Watchman Contact-List</a></li>
+                    </ul>
+                        
+                    <!-- Tab panes -->
+                    <div class="tab-content m-t-10">
+                        <div class="tab-pane table-responsive active" id="All">
+                            <table class="table m-b-0 table-hover">
+                                <thead>
+                                    <tr>                                       
+                                        
+                                        <th>Block No.</th>
+                                        <th>Name</th>
+                                        <th>Contact No.</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    {% for k in context.mid_contact %}
+                                    <tr> 
+                                        <td>{{k.m_id.homeNo}}</td>
+                                        <td>{{k.fname}} {{k.lname}}</td>
+                                        <td>{{k.m_id.contactNo}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>                            
+                        </div>
+                        
+                    
+                   
+                        <div class="tab-pane table-responsive" id="All1">
+                            <table class="table m-b-0 table-hover">
+                                <thead>
+                                    <tr>                                       
+                                        
+                            
+                                        <th>Watchman Name</th>
+                                        <th>Contact No.</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for k in context.wid_contact %}
+                                    <tr> 
+                                        
+                                        <td>{{k.fname}} {{k.lname}}</td>
+                                        <td>{{k.contact_no}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </section>
+        {% endblock %}
+
+        {% block javascript %}
+        <!-- Scripts -->
+        <script src="{% static 'watchman\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'watchman\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'watchman\assets\bundles\mainscripts.bundle.js' %}"></script>
+                		<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        {% endblock %}
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

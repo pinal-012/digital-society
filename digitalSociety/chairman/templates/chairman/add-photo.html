@@ -1,0 +1,114 @@
+﻿{% extends 'chairman/index.html' %}
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="{% static 'chairman\assets\images\logo.svg' %}" type="image/x-icon"> <!-- Favicon-->
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+         
+        {% block cssextra %}
+        <title>Add Photo - Digital Society</title>      
+        <link rel="stylesheet" href="{% static 'chairman\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\plugins\bootstrap-material-datetimepicker\css\bootstrap-material-datetimepicker.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\plugins\bootstrap-select\css\bootstrap-select.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\color_skins.css' %}">
+            </head>
+        <body class="theme-cyan">
+        {% endblock %}
+        
+
+        {% block content %}
+        <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Add Photo <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'c_index' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active">Add Photo</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            <div class="body">
+                <div class="col-sm-14">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="photoName" placeholder="Enter Photo Name">
+                    </div>
+                </div>
+                <div class="col-sm-14">
+                    <div class="form-group">
+                        <input type="file" class="form-control" name="photo">
+                    </div>
+                </div>
+                    <div class="col-sm-12">
+                        <input type="submit" class="btn btn-primary btn-round" name="submit" value="SUBMIT">
+                        <!-- <input type="submit" class="btn btn-default btn-round btn-simple" name="cancle" value="CANCLE"> -->
+                        <a href="" style="color: #4fc3f7;"> Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </section>
+        {% endblock %}
+
+       
+                <!-- Scripts -->
+                {% block javascript %}
+        <script src="{% static 'chairman\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'chairman\assets\bundles\vendorscripts.bundle.js' %}"></script>
+        <script src="{% static 'chairman\assets\bundles\mainscripts.bundle.js' %}"></script>
+        <script src="{% static 'chairman\assets\plugins\momentjs\moment.js' %}"></script>
+        <script src="{% static 'chairman\assets\plugins\bootstrap-material-datetimepicker\js\bootstrap-material-datetimepicker.js' %}"></script>
+        <script>    $.fn.selectpicker.Constructor.DEFAULTS.iconBase = 'zmdi';
+    $.fn.selectpicker.Constructor.DEFAULTS.tickIcon = 'zmdi-check';</script>
+    <script>
+        $(function () {
+        //Datetimepicker plugin
+        $('.datetimepicker').bootstrapMaterialDatePicker({
+            format: 'dddd DD MMMM YYYY - HH:mm',
+            clearButton: true,
+            weekStart: 1
+        });
+    });
+    </script>
+				<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        {% endblock %}
+        <!--End of Tawk.to Script-->
+    </body>
+</html>

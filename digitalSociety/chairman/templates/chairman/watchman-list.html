@@ -1,0 +1,127 @@
+﻿{% extends 'chairman/index.html' %}
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="csrf-token" content="iL8hUXsdXy71MbOZjq4fWUv4KGPZnJ7k17P7RClL">
+        <link rel="icon" href="https://thememakker.com/templates/oreo/hospital/laravel/public/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <meta name="description" content="Oero Laravel">
+        <meta name="author" content="Oero Laravel">
+                
+        {% block cssextra %}      
+        <title>All Watchman - Digital Society</title>   
+        <link rel="stylesheet" href="{% static 'chairman\assets\plugins\bootstrap\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\plugins\jquery-datatable\dataTables.bootstrap4.min.css' %}">
+                <!-- Custom Css -->
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\main.css' %}">
+        <link rel="stylesheet" href="{% static 'chairman\assets\css\color_skins.css' %}">
+        {% endblock %}
+    </head>
+        <body class="theme-cyan">
+        <!-- Page Loader -->
+        
+        {% block content %}
+        <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>All Watchman <small class="text-muted">Welcome to Digital Society</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                        <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="{% url 'c_index' %}"><i class="zmdi zmdi-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active">All Watchman</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card patients-list">
+                <div class="body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs padding-0">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#All">Watchman</a></li>
+                    </ul>
+                        
+                    <!-- Tab panes -->
+                    <form>
+                        {% csrf_token %}
+                    <div class="tab-content m-t-10">
+                        <div class="tab-pane table-responsive active" id="All">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable" style="text-align:center">
+                                <thead>
+                                    <tr>                                       
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Contact No.</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    {% for k in context.wid_all %}
+                                    <tr>
+                                        <td><span class="list-icon"><img class="patients-img" src="{{k.profile_pic.url}}" alt=""></span></td>
+                                        <td>{{k.fname}} {{k.lname}}</td>
+                                        <td>{{k.contact_no}}</td>
+                                        <td>{{k.user_id.email}}</td>
+
+                                        {% if k.is_verified == True %}
+                                        <td><a href="{% url 'c_watchman-approval' pk=k.id %}" class="badge badge-success">Approved</a></td>
+                                        {% endif %}
+
+                                        {% if k.is_verified == False %}
+                                        <td><a href="{% url 'c_watchman-approval' pk=k.id %}" class="badge badge-warning">Pending</a></td>
+                                        {% endif %}
+                                        <td><button type="button" data-watchman="{{k.id}}" class="badge badge-info">Delete</i></button></td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>                            
+                        </div>
+                        
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </section>
+        {% endblock %}
+
+        {% block javascript %}
+                <script src="{% static 'chairman\assets\bundles\libscripts.bundle.js' %}"></script>    
+        <script src="{% static 'chairman\assets\bundles\vendorscripts.bundle.js' %}"></script>
+
+        <script src="{% static 'chairman\assets\bundles\mainscripts.bundle.js' %}"></script>
+                                <script src="{% static 'chairman\assets\bundles\datatablescripts.bundle.js' %}"></script>
+    <script src="{% static 'chairman\assets\js\pages\tables\jquery-datatable.js' %}"></script>
+				<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        {% include 'chairman/ajaxfile.html' %}
+        {% endblock %}
+        <!--End of Tawk.to Script-->
+    </body>
+</html>
